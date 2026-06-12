@@ -1,0 +1,27 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+venv/ .venv/ env/
+
+# Images (too large for git)
+data/figshare/*.jpg
+data/figshare/*.png
+data/opted/Normal/
+data/opted/TF/
+data/opted/TI/
+
+# Checkpoints and results
+results/
+
+# Jupyter / Colab
+.ipynb_checkpoints/
+*.ipynb
+
+# IDE
+.vscode/ .idea/
+
+# OS
+.DS_Store Thumbs.db
+
+# Logs
+*.log

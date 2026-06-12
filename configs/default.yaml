@@ -1,0 +1,40 @@
+# ─── Task ─────────────────────────────────────────────────────────────────────
+active_case: "C2_BINARY_TF"
+
+# ─── Data ─────────────────────────────────────────────────────────────────────
+seed:     123
+n_folds:  5
+
+# ─── Model ────────────────────────────────────────────────────────────────────
+backbone:        "vit_base_patch14_dinov2"
+backbone_dim:    768
+head_hidden_dim: 256
+img_size:        336
+drop_rate:       0.1
+
+# ─── Training ─────────────────────────────────────────────────────────────────
+epochs:         60
+patience:       20
+warmup_epochs:  8
+val_fraction:   0.1
+batch_size:     8
+
+# ─── Optimiser ────────────────────────────────────────────────────────────────
+backbone_lr:  5.0e-6
+head_lr:      1.0e-3
+weight_decay: 0.01
+grad_clip:    1.0
+
+# ─── Loss ─────────────────────────────────────────────────────────────────────
+focal_alpha:          [0.35, 0.65]
+focal_gamma:          2.0
+label_smoothing:      0.05
+center_loss_lambda:   0.0    # set to 0 to disable center loss as it has no change in the output (centerl=no effect i.e excluded)
+center_lr:            0.5
+center_class_weights: true
+
+# ─── Regularisation ───────────────────────────────────────────────────────────
+ema_decay:    0.999
+mixup_alpha:  0.3
+cutmix_alpha: 1.0
+mix_prob:     0.0    # set to 0 to disable mixup/cutmix without breaking code
