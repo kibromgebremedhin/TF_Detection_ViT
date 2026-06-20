@@ -285,7 +285,7 @@ def train_one_fold(
                   f"acc={acc:.4f} | f1={f1_mac:.4f} | p={patience}{star}")
 
         if patience >= hparams["patience"]:
-            print(f"    ⏹  Early stopping at epoch {epoch}")
+            print(f"     Early stopping at epoch {epoch}")
             break
 
     fold_time = (time.time() - t_start) / 60
