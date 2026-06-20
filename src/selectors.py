@@ -9,7 +9,7 @@ Selectors
 ---------
 SEGate            SE-Net style FC bottleneck gate        74,544 params (D=768, r=16)
 L0HardConcreteGate  L0 Hard Concrete per-feature gates      768 params
-ECAGate           ECA-Net adaptive 1D-conv gate              5 params  (k=9 for D=768)
+ECAGate           ECA-Net adaptive 1D-conv gate              5 params
 ECASTGHybrid      ECA → Stochastic Gates pipeline          773 params
 """
 
@@ -117,9 +117,7 @@ class L0HardConcreteGate(nn.Module):
 class ECAGate(nn.Module):
     """
     ECA-Net adaptive 1D-conv channel attention (Wang et al., CVPR 2020).
-    Kernel size k derived from feature dimension D:
-      k = 9 for D = 768.
-    Only 5 trainable parameters regardless of D.
+
     """
 
     def __init__(self, in_features: int = 768, gamma: int = 2, b: int = 1):
