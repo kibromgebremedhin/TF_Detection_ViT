@@ -1,9 +1,8 @@
 """
-Baseline Experiment — DINOv2 ViT-B/14 without ECA selector.
+Baseline Experiment(DINOv2 ViT-B/14 without ECA selector)
 
 Identical training protocol to train_figshare.py but the ECA gate
 is replaced with an Identity module (no feature selection at all).
-This provides the ablation baseline for Table 5 in the thesis.
 
 Usage
 -----
@@ -217,7 +216,7 @@ def main():
         print(f"  Sensitivity: {100*summary['sensitivity_mean']:.2f}% ± {100*summary['sensitivity_std']:.2f}%")
         print(f"  Specificity: {100*summary['specificity_mean']:.2f}% ± {100*summary['specificity_std']:.2f}%")
         print(f"{'='*65}")
-        print(f"✅ Summary → {output_dir / 'summary.json'}")
+        print(f" Summary → {output_dir / 'summary.json'}")
 
 
 if __name__ == "__main__":
