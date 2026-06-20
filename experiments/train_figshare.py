@@ -133,7 +133,7 @@ def _save_summary(fold_results, output_dir, cfg):
     print(f"  Sensitivity: {100*summary['sensitivity_mean']:.2f}% ± {100*summary['sensitivity_std']:.2f}%")
     print(f"  Specificity: {100*summary['specificity_mean']:.2f}% ± {100*summary['specificity_std']:.2f}%")
     print(f"{'='*65}\n")
-    print(f"✅ Summary → {output_dir / 'summary.json'}")
+    print(f" Summary → {output_dir / 'summary.json'}")
 
 
 if __name__ == "__main__":
