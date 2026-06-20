@@ -1,4 +1,4 @@
-# DINOv2 + ECA — Trachoma Classification
+# DINOv2 + ECA - Trachoma Classification
 
 MSc thesis codebase for binary trachoma follicular (TF) classification using
 DINOv2 ViT-B/14 with an ECA channel-attention gate, trained on the Figshare
@@ -160,12 +160,3 @@ Input [B, 3, 336, 336]
 - EMA decay=0.999,  WeightedRandomSampler
 
 ---
-
-## Citation
-
-```
-[Your thesis citation here]
-```
-
-## License
-MIT
