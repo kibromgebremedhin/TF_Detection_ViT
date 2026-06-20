@@ -4,7 +4,7 @@ Compares SE-Gate, L0 Hard Concrete, ECA-Net, ECA+STG on DINOv2 ViT-B/14.
 
 Usage
 -----
-    # Run all 4 selectors (sequential, takes a long time)
+    # Run all 4 selectors
     python experiments/selector_ablation.py
 
     # Run a single selector
@@ -102,7 +102,7 @@ def save_comparison(all_summaries, output_dir):
     comparison = {"selectors": {s["selector"]: s for s in all_summaries}}
     with open(output_dir / "comparison.json", "w") as f:
         json.dump(comparison, f, indent=2)
-    print(f"✅ Comparison → {output_dir / 'comparison.json'}")
+    print(f" Comparison → {output_dir / 'comparison.json'}")
 
 
 def main():
