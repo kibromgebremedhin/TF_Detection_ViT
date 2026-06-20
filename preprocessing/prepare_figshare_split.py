@@ -151,7 +151,7 @@ def main():
     with open(out, "w") as f:
         json.dump(split_data, f, indent=2)
 
-    print(f"\n✅ Split saved → {out}")
+    print(f"\n Split saved → {out}")
 
 
 if __name__ == "__main__":
