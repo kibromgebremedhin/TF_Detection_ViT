@@ -38,7 +38,7 @@ def main():
     for sub in ["Normal","TF","TI"]:
         d = opted_dir / sub
         n = len(list(d.glob("*"))) if d.exists() else 0
-        status = "✅" if d.exists() else "⚠️  MISSING"
+        status = "FOUND" if d.exists() else "  MISSING"
         print(f"  {sub}/  {status}  ({n} files)")
 
     df["full_path"] = df.apply(
@@ -46,10 +46,10 @@ def main():
     )
     missing = df[~df["full_path"].apply(os.path.exists)]
     if len(missing):
-        print(f"\n⚠️  {len(missing)} images not found.")
+        print(f"\n  {len(missing)} images not found.")
         print(f"   First 5: {missing['filename'].tolist()[:5]}")
     else:
-        print(f"\n✅ All {len(df)} images found on disk.")
+        print(f"\n All {len(df)} images found on disk.")
 
     binary = df[df["label"].isin(["Normal","TF"])]
     test   = binary[binary["split"]=="test"] if "split" in binary.columns else binary
