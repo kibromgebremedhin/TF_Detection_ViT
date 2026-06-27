@@ -14,8 +14,8 @@ TF_Detection_ViT/
 │   ├── model.py           ← DINOv2ECABinary, SelectorModel, BackboneModel
 │   ├── selectors.py       ← SEGate, L0, ECAGate, ECASTGHybrid + factory
 │   ├── dataset.py         ← SimpleDataset, transforms, label mapping
-│   ├── losses.py          ← FocalLoss, CenterLoss
-│   ├── utils.py           ← EMA, AverageMeter, Mixup, CutMix, seed_everything
+│   ├── losses.py          ← FocalLoss
+│   ├── utils.py           ← EMA, AverageMeter, seed_everything
 │   ├── logging_utils.py   ← EpochLogger, save_fold_artifacts
 │   └── train_utils.py     ← Shared train_one_fold() loop
 ├── experiments/
@@ -156,7 +156,7 @@ Input [B, 3, 336, 336]
 **Training:**
 - Phase 1 (8 epochs): backbone frozen, head + ECA at lr=1e-3
 - Phase 2 (up to 52 epochs): full fine-tune, backbone lr=5e-6, cosine LR
-- Loss: FocalLoss(α=[0.35,0.65], γ=2) + CenterLoss(λ=0.005)
+- Loss: FocalLoss(α=[0.35,0.65], γ=2) 
 - EMA decay=0.999,  WeightedRandomSampler
 
 ---
