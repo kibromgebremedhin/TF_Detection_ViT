@@ -81,24 +81,24 @@ python preprocessing/prepare_opted_metadata.py
 
 ## Running Experiments
 
-### Step 1 — Generate split (required for all experiments)
+### Step 1: Generate split (required for all experiments)
 ```bash
 python preprocessing/prepare_figshare_split.py
 ```
 
-### Step 2 — Final model (DINOv2 + ECA)
+### Step 2: Final model (DINOv2 + ECA)
 ```bash
 python experiments/train_figshare.py \
     --output_dir results/figshare_dinov2_eca
 ```
 
-### Step 3 — Baseline (DINOv2 without ECA)
+### Step 3: Baseline (DINOv2 without ECA)
 ```bash
 python experiments/baseline_experiment.py \
     --output_dir results/baseline_no_eca
 ```
 
-### Step 4 — Stage 1: Backbone comparison
+### Step 4: Stage 1: Backbone comparison
 ```bash
 # Run each backbone separately (one at a time, each takes ~2 hours on GPU)
 python experiments/backbone_experiment.py --backbone eva02_base
