@@ -149,11 +149,13 @@ def train_one_fold(
                 {"params": other_par,                    "lr": hparams["backbone_lr"] * 10},
                 {"params": center_criterion.parameters(),"lr": hparams["backbone_lr"] * 10},
             ], weight_decay=hparams["weight_decay"])
-            remaining = (
-                (hparams["epochs"] - hparams["warmup_epochs"]) * len(train_loader)
-            )
-            scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(
-                optimizer, T_max=remaining, eta_min=1e-7
+            # T_0=10: first restart cycle spans 10 epochs 
+            # T_mult=2: each subsequent cycle doubles in length (10 -> 20 -> 40 ...),
+            #           giving periodic LR restarts that help escape sharp minima
+            #           during the fine-tuning phase rather than a single monotonic decay.
+            steps_per_epoch = len(train_loader)
+            scheduler = torch.optim.lr_scheduler.CosineAnnealingWarmRestarts(
+                optimizer, T_0=10 * steps_per_epoch, T_mult=2, eta_min=1e-7
             )
             if use_amp:
                 scaler = GradScaler("cuda")
