@@ -146,8 +146,8 @@ def train_one_fold(
             other_par  = non_backbone_params()
             optimizer  = torch.optim.AdamW([
                 {"params": bb_params,                    "lr": hparams["backbone_lr"]},
-                {"params": other_par,                    "lr": hparams["backbone_lr"] * 10},
-                {"params": center_criterion.parameters(),"lr": hparams["backbone_lr"] * 10},
+                {"params": other_par,                    "lr": hparams["head_lr"]},
+                {"params": center_criterion.parameters(),"lr": hparams["head_lr"]},
             ], weight_decay=hparams["weight_decay"])
             # T_0=10: first restart cycle spans 10 epochs 
             # T_mult=2: each subsequent cycle doubles in length (10 -> 20 -> 40 ...),
