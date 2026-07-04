@@ -150,7 +150,7 @@ def save_summary(backbone_key, fold_results, out_dir):
     print(f"  Specificity: {100*summary['specificity_mean']:.2f}% ± {100*summary['specificity_std']:.2f}%")
     print(f"  Per-fold   : {[f'{100*a:.1f}%' for a in accs]}")
     print(f"{'='*70}\n")
-    print(f"✅ Summary → {out_dir / 'summary.json'}")
+    print(f" Summary → {out_dir / 'summary.json'}")
     return summary
 
 
