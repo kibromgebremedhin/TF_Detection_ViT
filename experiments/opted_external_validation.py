@@ -51,7 +51,7 @@ def parse_args():
     p.add_argument("--output_dir",     default="results/opted_validation")
     p.add_argument("--split",          default="test",
                    choices=["test", "val", "train", "all"])
-    p.add_argument("--batch_size",     type=int, default=16)
+    p.add_argument("--batch_size",     type=int, default=8)
     p.add_argument("--num_workers",    type=int, default=2)
     p.add_argument("--n_folds",        type=int, default=5)
     p.add_argument("--img_size",       type=int, default=336)
