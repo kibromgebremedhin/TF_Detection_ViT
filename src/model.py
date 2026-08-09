@@ -108,16 +108,20 @@ class SelectorModel(nn.Module):
         self,
         selector_name: str,
         num_classes: int = 2,
-        backbone_name: str = "dinov2_vitb14",
+        backbone_name: str = "vit_base_patch14_dinov2",
         backbone_dim: int = 768,
         head_hidden_dim: int = 256,
         drop_rate: float = 0.1,
         drop_path_rate: float = 0.1,
     ):
         super().__init__()
-        self.backbone = torch.hub.load(
-            "facebookresearch/dinov2", backbone_name, verbose=False
-        )
+        self.backbone = timm.create_model(
+        backbone_name,
+        pretrained=True,
+        num_classes=0,
+        global_pool="token",
+        img_size=336,
+    )
         # Set stochastic depth
         if drop_path_rate > 0 and hasattr(self.backbone, "blocks"):
             dpr = torch.linspace(0, drop_path_rate,
